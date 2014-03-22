@@ -24,6 +24,13 @@ for($i=0;$i<strlen($_Account);$i++)
 if($_Account[$i]==" ")$error=1;
 for($j=0;$j<strlen($_Password);$j++)
 if($_Password[$j]==" ")$error=1;
+$sql = "SELECT * FROM `User`";
+$sth=$db->prepare($sql);
+$sth->execute();
+while($result=$sth->fetchObject())
+{
+	if($result->account==$_Account)$error=1;
+}
 if($error==0)
 {	
 	$sql = "INSERT INTO `User`(account,password,is_admin)"."VALUES(?,?,?)" ;
@@ -35,7 +42,7 @@ if($error==0)
 }
 else
 {
-	echo "GO HELL!!!";
+	echo "Input error!!!";
 	echo "<a href=\"http://people.cs.nctu.edu.tw/~chenc/login.php\"target=\"_new\">Back. </a>";
 }
 

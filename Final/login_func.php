@@ -117,7 +117,7 @@ $db = new PDO($dsn,$db_user,$db_password);
 	else
 	{
 		echo 'Permission deny. ';
-		echo "<a href=\"http://people.cs.nctu.edu.tw/~chenc/login.php\"target=\"_new\">Back. </a>";
+		echo "<a href=\"http://people.cs.nctu.edu.tw/~chenc/login.php\"target=\"_top\">Back. </a>";
 
 	}
 		
