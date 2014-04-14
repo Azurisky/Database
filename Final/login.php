@@ -1,6 +1,9 @@
 <?php 
 	session_start();
 	unset($_SESSION['Identity']);
+	unset($_SESSION['Account']);
+	unset($_SESSION['ID']);
+	unset($_SESSION['Password']);
 ?>
 
 

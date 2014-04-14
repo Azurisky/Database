@@ -4,7 +4,7 @@
 $_ID = $_POST['ID'];
 $_Account = $_POST['Account'];
 $_Password = $_POST['Password'];
-$_Is_admin = $_POST['Is_admin'];
+
 
 $_Hash = md5($_Password);
 
@@ -35,7 +35,7 @@ if($error==0)
 {	
 	$sql = "INSERT INTO `User`(account,password,is_admin)"."VALUES(?,?,?)" ;
 	$sth = $db->prepare($sql);
-	$sth->execute(array( $_Account, $_Hash, $_Is_admin));
+	$sth->execute(array( $_Account, $_Hash, 0));
 
 	echo "Congrats!!! You can try to log in now. ";
 	echo "<a href=\"http://people.cs.nctu.edu.tw/~chenc/login.php\"target=\"_new\">Back. </a>";
