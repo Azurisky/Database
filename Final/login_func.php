@@ -56,7 +56,7 @@
 			$sql = "SELECT * FROM `Flight` ORDER BY  `".$_Type."` ".$_Info;
 			$sth=$db->prepare($sql);
 			$sth->execute();
-			//echo "<p>Admin_by_session</p>";
+			echo "<p>Admin_by_session</p>";
 			echo "<table border=\"1\">";
 			echo "<form action = \"newflight.php\" >
 						<button type = \"submit\">Create New Flight</button>
@@ -67,39 +67,13 @@
 				  "<form action = \"delflight.php\" >
 						<button type = \"submit\">Delete Flight</button>
 				  </form>
+				  <form action = \"seaflight.php\" >
+						<button type = \"submit\">Search Flight Ticket</button>
+				  </form>
 				  </table>";
 				  
-			echo "<table border=\"1\">";
-			echo "<form action = \"seaflight_func.php\" method = \"POST\">
-					Please enter the information you want to search:
-				  <select name = \"Type\">
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-				  </select>"."
-					<input type=\"text\" name=\"Info\">
-					<button type=\"submit\">submit</button>
-				</form></table>";
-				
-			echo "<table border=\"1\">";
-			echo "<form action = \"login_func.php\" method = \"POST\">
-				 Order by:
-				  <select name = \"Type\">
-					<option value = \"ID\">ID</option>
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-					<option value = \"Departure_time\">Departure_time</option>
-					<option value = \"Arrival_time\">Arrival_time</option>
-					<option value = \"Price\">Price</option>
-				  </select>"."
-					Please choose a way to order:
-					<input type=\"radio\" name=\"Info\" value=\"ASC\" checked>Ascending order
-					<input type=\"radio\" name=\"Info\" value=\"DESC \">Descending order
-					<button type=\"submit\">submit</button>
-				</form></table>";
-				 
-				 
+		
+	
 				  
 			
 			echo "<table border=\"1\">";
@@ -129,7 +103,7 @@
 					$in_list=0;
 				
 					$_db = new PDO($dsn,$db_user,$db_password);
-					$_sql = "SELECT * FROM `".$_Account."`";
+					$_sql = "SELECT * FROM `comparison_list` where `user`=".$_Account ;
 					$_sth=$_db->prepare($_sql);
 					$_sth->execute(array());
 					
@@ -170,6 +144,9 @@
 				  </form>
 				  <form action = \"comparisonlist.php\" >
 						<button type = \"submit\">ComparisonList</button>
+				  </form>";
+			echo  "<form action = \"country.php\" >
+						<button type = \"submit\">CountryList</button>
 				  </form></table>";
 			echo "<p><form action = \"login.php\" >
 						<button type = \"submit\">Log out</button>
@@ -187,42 +164,14 @@
 			$sql = "SELECT * FROM `Flight` ORDER BY  `".$_Type."` ".$_Info;
 			$sth=$db->prepare($sql);
 			$sth->execute();
-			//echo "<p>User_by_session</p>";
+			echo "<p>User_by_session</p>";
 			echo "<table border=\"1\">";
-			echo "<form action = \"comparisonlist.php\" >
-						<button type = \"submit\">ComparisonList</button>
+			echo "<form action = \"seaflight.php\" >
+						<button type = \"submit\">Search Flight Ticket</button>
 				  </form>
 				  </table>";
-			
-			echo "<table border=\"1\">";
-			echo "<form action = \"seaflight_func.php\" method = \"POST\">
-					Please enter the information you want to search:
-				  <select name = \"Type\">
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-				  </select>"."
-					<input type=\"text\" name=\"Info\">
-					<button type=\"submit\">submit</button>
-				</form></table>";
 				
-			echo "<table border=\"1\">";
-			echo "<form action = \"login_func.php\" method = \"POST\">
-				 Order by:
-				  <select name = \"Type\">
-					<option value = \"ID\">ID</option>
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-					<option value = \"Departure_time\">Departure_time</option>
-					<option value = \"Arrival_time\">Arrival_time</option>
-					<option value = \"Price\">Price</option>
-				  </select>"."
-					Please choose a way to order:
-					<input type=\"radio\" name=\"Info\" value=\"ASC\" checked>Ascending order
-					<input type=\"radio\" name=\"Info\" value=\"DESC \">Descending order
-					<button type=\"submit\">submit</button>
-				</form></table>";
+	
 			
 			echo "<table border=\"1\">";
 			echo "<tr>
@@ -296,7 +245,7 @@
 			$sql = "SELECT * FROM `Flight` ORDER BY  `".$_Type."` ".$_Info;
 			$sth=$db->prepare($sql);
 			$sth->execute();
-			//echo "<p>Admin_by_log</p>";
+			echo "<p>Admin_by_log</p>";
 			echo "<table border=\"1\">";
 			echo "<form action = \"newflight.php\" >
 						<button type = \"submit\">Create New Flight</button>
@@ -307,19 +256,10 @@
 				  "<form action = \"delflight.php\" >
 						<button type = \"submit\">Delete Flight</button>
 				  </form>
+				  <form action = \"seaflight.php\" >
+						<button type = \"submit\">Search Flight Ticket</button>
+				  </form>
 				  </table>";
-				  
-			echo "<table border=\"1\">";
-			echo "<form action = \"seaflight_func.php\" method = \"POST\">
-					Please enter the information you want to search:
-				  <select name = \"Type\">
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-				  </select>"."
-					<input type=\"text\" name=\"Info\">
-					<button type=\"submit\">submit</button>
-				</form></table>";
 				
 			echo "<table border=\"1\">";
 			echo "<form action = \"login_func.php\" method = \"POST\">
@@ -410,6 +350,9 @@
 				  </form>
 				  <form action = \"comparisonlist.php\" >
 						<button type = \"submit\">ComparisonList</button>
+				  </form>";
+			echo  "<form action = \"country.php\" >
+						<button type = \"submit\">CountryList</button>
 				  </form></table>";
 			echo "<p><form action = \"login.php\" >
 						<button type = \"submit\">Log out</button>
@@ -427,42 +370,12 @@
 			$sql = "SELECT * FROM `Flight` ORDER BY  `".$_Type."` ".$_Info;
 			$sth=$db->prepare($sql);
 			$sth->execute();
-			//echo "<p>User_by_log</p>";
+			echo "<p>User_by_log</p>";
 			echo "<table border=\"1\">";
-			echo "<form action = \"comparisonlist.php\" >
-						<button type = \"submit\">ComparisonList</button>
+			echo "<form action = \"seaflight.php\" >
+						<button type = \"submit\">Search Flight Ticket</button>
 				  </form>
 				  </table>";
-			
-			echo "<table border=\"1\">";
-			echo "<form action = \"seaflight_func.php\" method = \"POST\">
-					Please enter the information you want to search:
-				  <select name = \"Type\">
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-				  </select>"."
-					<input type=\"text\" name=\"Info\">
-					<button type=\"submit\">submit</button>
-				</form></table>";
-				
-			echo "<table border=\"1\">";
-			echo "<form action = \"login_func.php\" method = \"POST\">
-				 Order by:
-				  <select name = \"Type\">
-					<option value = \"ID\">ID</option>
-					<option value = \"Flight_number\">Flight number</option>
-					<option value = \"Departure\">Departure</option>
-					<option value = \"Destination\">Destination</option>
-					<option value = \"Departure_time\">Departure_time</option>
-					<option value = \"Arrival_time\">Arrival_time</option>
-					<option value = \"Price\">Price</option>
-				  </select>"."
-					Please choose a way to order:
-					<input type=\"radio\" name=\"Info\" value=\"ASC\" checked>Ascending order
-					<input type=\"radio\" name=\"Info\" value=\"DESC \">Descending order
-					<button type=\"submit\">submit</button>
-				</form></table>";
 			
 			echo "<table border=\"1\">";
 			echo "<tr>

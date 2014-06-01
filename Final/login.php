@@ -19,3 +19,8 @@
 <form action = "Register.php" >
 	<button type = "submit">Register</button>
 </form>
+
+
+<form action = "seaflight.php" >
+	<button type = "submit">Search Flight Ticket</button>
+</form>

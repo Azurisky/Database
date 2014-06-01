@@ -39,21 +39,26 @@
 		$db_password ="313";
 		$dsn = "mysql:host=$db_host;dbname=$db_name";
 		
-		$_db = new PDO($dsn,$db_user,$db_password);
+	/*	$_db = new PDO($dsn,$db_user,$db_password);
 		$_sql = "SELECT * FROM `Flight` WHERE `ID` =".$_Flight_ID;
 		$_sth=$_db->prepare($_sql);
 		$_sth->execute(array());
-		$result=$_sth->fetchObject();
+		$result=$_sth->fetchObject();*/
 		
 		
 		//echo $result->ID.$result->Flight_number.$result->Departure.$result->Destination.$result->Departure_time;
 		
 		
-		
 		$db = new PDO($dsn,$db_user,$db_password);
-		$sql = "INSERT INTO `".$_Account."`(ID,Flight_number,Departure,Destination,Departure_time,Arrival_time,Price)"."VALUES( ?, ?, ?, ?, ?, ?, ?)" ;
+		$sql = "INSERT INTO `comparison_list`(user,ID)"."VALUES( ?,?)" ;
 		$sth = $db->prepare($sql);
-		$sth->execute(array($result->ID,$result->Flight_number,$result->Departure,$result->Destination,$result->Departure_time,$result->Arrival_time,$result->Price));
+		$sth->execute(array($_Account,$_Flight_ID));
+		
+		
+	/*	$db = new PDO($dsn,$db_user,$db_password);
+		$sql = "INSERT INTO `".$_Account."`(ID)"."VALUES( ?)" ;
+		$sth = $db->prepare($sql);
+		$sth->execute(array($_Flight_ID));*/
 		
 		if($_SESSION['Type'] == true){
 			header("Location:seaflight_func.php");

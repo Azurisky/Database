@@ -31,33 +31,26 @@
 		$db = new PDO($dsn,$db_user,$db_password);
 		
 		
-		$sql = "SELECT * FROM `airport`";
+		$sql = "SELECT * FROM `country`";
 				$sth=$db->prepare($sql);
 				$sth->execute();
 				
 		echo "<table border=\"1\">";
 				echo "<tr>
 							<td>#</td>
-							<td>Location</td>
-							<td>Longitude</td>
-							<td>Latitude</td>
-							<td>Country</td>
-							<td>Timezone</td>
-							<td>Fullname</td>
+							<td>abbreviation</td>
+							<td>fullname</td>
+							
 					  </tr>";
 				while($result=$sth->fetchObject())
 					 {
 						echo 
 						"<tr>
 								<th>".$result->id ."</th>
-								<th>".$result->Location."</th>
-								<th>".$result->Longitude."</th>
-								<th>".$result->Latitude."</th>
-								<th>".$result->country."</th>
-								<th>".$result->timezone."</th>
+								<th>".$result->abbreviation."</th>
 								<th>".$result->fullname."</th>";
 						echo 
-						"<th>"."<form action = \"delairport.php\" method=\"POST\" >
+						"<th>"."<form action = \"delcountry.php\" method=\"POST\" >
 										<button name = \"ID\" value =\"".$result->id."\">delete</button>
 								</form>" ."</th>";
 						
@@ -68,29 +61,21 @@
 				
 				
 				echo "</table>";
-				echo "<form action = \"newairport.php\" method = \"POST\">
-						<p>new airport</p>
-						<p>Location<input type=\"text\" name=\"Location\"></p>
-						<p>Longitude<input type=\"text\" name=\"Longitude\"></p>
-						<p>Latitude<input type=\"text\" name=\"Latitude\"></p>
-						<p>Country<input type=\"text\" name=\"country\"></p>
-						<p>Timezone<input type=\"text\" name=\"timezone\"></p>
-						<p>Fullname<input type=\"text\" name=\"fullname\"></p>
+				echo "<form action = \"newcountry.php\" method = \"POST\">
+						<p>new country</p>
+						<p>abbreviation<input type=\"text\" name=\"abbreviation\"></p>
+						<p>fullname<input type=\"text\" name=\"fullname\"></p>
 						<p><button type=\"submit\">submit</button></p>
 					  </form>";
 				
 				
 				
 				
-				echo "<form action = \"modairport.php\" method = \"POST\">
-						<p>modify airport</p>
+				echo "<form action = \"modcountry.php\" method = \"POST\">
+						<p>modify country</p>
 						<p>ID<input type=\"text\" name=\"id\"></p>
-						<p>Location<input type=\"text\" name=\"Location\"></p>
-						<p>Longitude<input type=\"text\" name=\"Longitude\"></p>
-						<p>Latitude<input type=\"text\" name=\"Latitude\"></p>
-						<p>Country<input type=\"text\" name=\"country\"></p>
-						<p>Timezone<input type=\"text\" name=\"timezone\"></p>
-						<p>Fullname<input type=\"text\" name=\"fullname\"></p>
+						<p>abbreviation<input type=\"text\" name=\"abbreviation\"></p>
+						<p>fullname<input type=\"text\" name=\"fullname\"></p>
 						<p><button type=\"submit\">submit</button></p>
 					  </form>";
 				

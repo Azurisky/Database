@@ -55,8 +55,13 @@
 		$dsn = "mysql:host=$db_host;dbname=$db_name";
 		$db = new PDO($dsn,$db_user,$db_password);
 		
-		$sql = "SELECT * FROM `".$_Account."` ORDER BY  `".$_Type_o."` ".$_Info_o;
+		//$sql = "SELECT * FROM `".$_Account."` inner join `Flight` on `".$_Account."`.ID=`Flight`.ID ORDER BY  `Flight`.`".$_Type_o."` ".$_Info_o;
+
+		
+		$sql = "SELECT * FROM `comparison_list` inner join `Flight` on `comparison_list`.ID=`Flight`.ID ORDER BY  `Flight`.`".$_Type_o."` ".$_Info_o;
+		echo $sql;
 		$sth=$db->prepare($sql);
+		
 		$sth->execute(array());
 		
 		
@@ -64,7 +69,7 @@
 				 Order by:
 				  <select name = \"Type_o\">
 					<option value = \"ID\">ID</option>
-					<option value = \"Flight_number\">Flight number</option>
+					<option value = \"Flight_number\">Flight number</option> 
 					<option value = \"Departure\">Departure</option>
 					<option value = \"Destination\">Destination</option>
 					<option value = \"Departure_time\">Departure_time</option>
@@ -104,7 +109,7 @@
 						$in_list=0;
 					
 						$_db = new PDO($dsn,$db_user,$db_password);
-						$_sql = "SELECT * FROM `".$_Account."`";
+						$_sql = "SELECT * FROM `comparison_list` where `user`=".$_Account;
 						$_sth=$_db->prepare($_sql);
 						$_sth->execute(array());
 						

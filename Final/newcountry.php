@@ -23,12 +23,9 @@
 	
 	if($_SESSION['Identity'] == true){
 	
-	$_Location=$_POST['Location'];
-	$_Longitude=$_POST['Longitude'];
-	$_Latitude=$_POST['Latitude'];
-	$_country=$_POST['country'];
-	$_timezone=$_POST['timezone'];
+	$_abbreviation=$_POST['abbreviation'];
 	$_fullname=$_POST['fullname'];
+	
 	
 	$db_host ="dbhome.cs.nctu.edu.tw";
 	$db_name ="scsu_cs";
@@ -38,11 +35,11 @@
 	$dsn = "mysql:host=$db_host;dbname=$db_name";
 	$db = new PDO($dsn,$db_user,$db_password);
 	
-	$sql = "INSERT INTO `airport`(Location,Longitude,Latitude,country,timezone,fullname)"."VALUES( ?, ?, ?, ?, ?, ?)" ;
+	$sql = "INSERT INTO `country`(abbreviation,fullname)"."VALUES( ?, ?)" ;
 	$sth = $db->prepare($sql);
-	$sth->execute(array($_Location,$_Longitude,$_Latitude,$_country,$_timezone,$_fullname));
+	$sth->execute(array($_abbreviation,$_fullname));
 	
-	header("Location:airport.php");
+	header("Location:country.php");
 	
 	}
 	else

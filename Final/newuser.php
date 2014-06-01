@@ -58,13 +58,7 @@
 		$sth->execute(array($_Account,$_Hash,$_is_admin));
 		
 		
-		$sql = "CREATE TABLE `".$_Account."` (  `ID`  int(10) unsigned primary key,
-												`Flight_number` varchar(255),
-												`Departure` varchar(255),
-												`Destination` varchar(255),
-												`Departure_time` datetime,
-												`Arrival_time` datetime,
-												`Price` int(11)) " ;
+		$sql = "CREATE TABLE `".$_Account."` (`ID`  int(10) unsigned primary key) " ;
 		$sth = $db->prepare($sql);
 		$sth->execute(array());
 		
@@ -76,25 +70,12 @@
 		$sth = $db->prepare($sql);
 		$sth->execute(array($_Account,$_Hash,$_is_admin));
 		
-		$sql = "alter table`".$_Account."` ADD INDEX (  `Departure` )" ;
-		$sth = $db->prepare($sql);
-		$sth->execute(array($_Account,$_Hash,$_is_admin));
-		
-		$sql = "alter table`".$_Account."` ADD INDEX (  `Destination` )" ;
-		$sth = $db->prepare($sql);
-		$sth->execute(array($_Account,$_Hash,$_is_admin));
 		
 		$sql = "alter table`".$_Account."` ADD FOREIGN KEY (  `ID` ) REFERENCES  `scsu_cs`.`Flight` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE" ;
 		$sth = $db->prepare($sql);
 		$sth->execute(array($_Account,$_Hash,$_is_admin));
 	    
-		$sql = "alter table`".$_Account."` ADD FOREIGN KEY (  `Departure` ) REFERENCES  `scsu_cs`.`airport` (`Location`) ON DELETE CASCADE ON UPDATE CASCADE" ;
-		$sth = $db->prepare($sql);
-		$sth->execute(array($_Account,$_Hash,$_is_admin));
 		
-		$sql = "alter table`".$_Account."` ADD FOREIGN KEY (  `Destination` ) REFERENCES  `scsu_cs`.`airport` (`Location`) ON DELETE CASCADE ON UPDATE CASCADE" ;
-		$sth = $db->prepare($sql);
-		$sth->execute(array($_Account,$_Hash,$_is_admin));
 		
 		header("Location:user.php");
 	}

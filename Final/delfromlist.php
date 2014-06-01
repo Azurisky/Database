@@ -42,9 +42,10 @@
 		
 		
 		$db = new PDO($dsn,$db_user,$db_password);
-		$sql = "DELETE FROM `".$_Account."` WHERE `ID`=?" ;
+		//$sql = "DELETE FROM `".$_Account."` WHERE `ID`=?" ;
+		$sql = "DELETE FROM `comparison_list` WHERE `ID`=? AND `user`=?" ;
 		$sth = $db->prepare($sql);
-		$sth->execute(array($result->ID));
+		$sth->execute(array($result->ID,$_Account));
 		
 		if($_SESSION['Type'] == true){
 			header("Location:seaflight_func.php");
